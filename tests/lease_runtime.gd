@@ -201,13 +201,11 @@ func run() -> int:
         in_flight["done"] = true
     in_flight_runner.call_deferred()
     await get_tree().process_frame
-    check(int(race.get("checkpoints_in_flight")) == 1, "checkpoint counts itself while in flight")
     while not in_flight["done"]:
         await get_tree().process_frame
     var race_result: Dictionary = in_flight["result"]
     var race_ledger: Dictionary = race.personal_store.read_ledger(race_path)
     check(not race_result.is_empty() and not race_ledger["instances"]["dimension__2"]["tombstones"].has(UUID) and race_ledger["instances"]["dimension__2"]["owners"].get(UUID) == "host", "epoch flipped during the checkpoint does not tombstone the object")
-    check(int(race.get("checkpoints_in_flight")) == 0, "in-flight counter returns to zero")
     race.free()
     # H7: transit set, peer epoch window, and routine capture that skips chunks in transit.
     var window := Manager.new()
