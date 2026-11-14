@@ -1,4 +1,4 @@
-# Retention for test-run folders (C:\Work\AGENTS.md "Disk and harnesses"): finished runs keep logs/results, lose binaries and copied inputs.
+# Retention for test-run folders: finished runs keep logs/results, lose binaries and copied inputs.
 # The $KeepFailed most recent failed (or unfinished) runs stay in full. -CheckOnly deletes nothing and exits 1 if a prunable run still holds an .exe/.pck/.dll.
 [CmdletBinding()]
 param(

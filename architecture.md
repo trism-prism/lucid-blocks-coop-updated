@@ -1,10 +1,10 @@
 # Lucid Blocks co-op architecture
 
-Status: gameplay responsiveness update, 2026-11-10. Local contracts and automated LAN gameplay are the evidence; current results and external Steam/human-test limits are in `playtest.md`. `tasks.md` is the execution ledger.
+Status: gameplay responsiveness update, 2026-11-10. Local contracts and automated LAN gameplay are the evidence; external Steam and human-test limits are noted below.
 
 ## Runtime and hard boundaries
 
-Target Steam app3495730/build26206996, game5.2.0.0, Windows x86-64, Godot4.6 double, GodotSteam4.17.1. Current and historical fingerprints: `authorization.md`; engine guide: `../guide.md`. Generic PATH Godot is not the matching runtime.
+Target Steam app3495730/build26206996, game5.2.0.0, Windows x86-64, Godot4.6 double, GodotSteam4.17.1. Engine guide: `../guide.md`. Generic PATH Godot is not the matching runtime.
 
 - Purchased install, original native libraries/executable and personal saves stay unchanged. Stage original runtime material privately under ignored `work/` with isolated profiles. No installation, release, driver change or native rebuild belongs to this scope. Feature-branch pushes to the fork are allowed.
 - Existing `main/autoload/ref.gd` creates one manager; production retains one active `Ref.world` per process. Canonical fixtures use one native World; independent loading is checked in separate host and guest processes.
@@ -87,7 +87,7 @@ Use `-CombatTests` separately after combat/render changes; preserve its original
 
 Validation, atomic persistence, revision/receipt guards, owner checks and fail-closed native capability gating remain production requirements. Tests of the same helper through several alternate APIs are unnecessary; fixtures use the actual checkpoint and lease APIs. Run the routine checks once after the relevant changes; repeat only for new failures or changed inputs.
 
-Automated LAN checks exercise real input, independent ownership, canonical terrain persistence and reconnect. Current dated results are in playtest.md. The expanded headless launcher retains strict failures from offline Steam and native shutdown resources. Real two-account Steam invites and subjective playfeel remain outside local coverage.
+Automated LAN checks exercise real input, independent ownership, canonical terrain persistence and reconnect. The expanded headless launcher retains strict failures from offline Steam and native shutdown resources. Real two-account Steam invites and subjective playfeel remain outside local coverage.
 
 ## Risks and exclusions
 
